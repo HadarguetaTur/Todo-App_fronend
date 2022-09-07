@@ -1,0 +1,21 @@
+// SETUP
+@import 'setup/typography';
+@import 'setup/variables';
+@import 'setup/mixins';
+@import 'setup/functions';
+
+// BASICS
+@import 'basics/helpers';
+@import 'basics/base';
+@import 'basics/layout';
+
+// COMPONENTS
+
+@import 'components/task-list.scss';
+@import 'components/task-preview.scss';
+@import 'components/add-task-modal.scss';
+@import 'components/task-controler.scss';
+
+//pages
+
+@import 'pages/home.scss'

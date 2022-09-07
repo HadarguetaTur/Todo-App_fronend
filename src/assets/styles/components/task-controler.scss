@@ -1,0 +1,14 @@
+.multi-checkbox{
+    gap: rem(20px);
+    margin: 20px auto;
+    box-shadow: 0 3px 7px rgba(0, 0, 0, 0.30);
+    padding: rem(20px);
+    div{
+        border-radius: 5px;
+    }
+    select{
+        position: relative;
+        font-family: Arial;             
+    }
+}
+
