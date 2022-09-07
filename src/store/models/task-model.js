@@ -18,16 +18,15 @@ export default {
 
   mutations: {
     setTasks(state, { tasks }) {
-      console.log(tasks)
       state.tasks = tasks
     },
     setEnptyTask(state, { task }) {
       state.emptyTask = task
-      console.log(state.emptyTask)
+
     },
     setEditTask(state, { task }) {
       state.editTask = task
-      console.log(state.emptyTask)
+ 
     },
     saveTask(state, { task }) {
       state.tasks.push(task)
@@ -41,9 +40,7 @@ export default {
   actions: {
     async loadTasks({ commit }, { filterBy }) {
       try {
-        console.log(filterBy)
         const tasks = await taskService.query(filterBy)
-        console.log(tasks)
         commit({ type: "setTasks", tasks })
         return tasks
       } catch (err) {
@@ -54,7 +51,6 @@ export default {
     async loadEmptyTask({ commit }) {
       try {
         const task = await taskService.getEmptyTask()
-
         commit({ type: "setEnptyTask", task })
         return task
       } catch (err) {
@@ -76,9 +72,8 @@ export default {
     },
     async saveTask({ commit }, { task }) {
       try {
-        console.log(task)
         const taskToSave = await taskService.save(task)
-
+        console.log(taskToSave)
         commit({ type: "saveTask", taskToSave })
       } catch (err) {
         console.log("Error: cannot save task", err)

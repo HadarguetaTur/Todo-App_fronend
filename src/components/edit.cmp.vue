@@ -17,8 +17,7 @@
     <label>
       Task Importance:
       <el-select v-model="task.importance">
-        <el-option value="">Importance</el-option>
-        <el-option v-for="(importance, idx) in this.importance" :value="importance" :key="idx">
+        <el-option v-for="(importance, idx) in this.importance" :value="importance" placeholder="importance" :key="idx">
           {{ importance }}
         </el-option>
       </el-select>
@@ -26,9 +25,9 @@
     </label>
     <label>
       Task Status:
-      <el-select v-model="task.status">
+      <el-select v-model="this.task.status">
         <el-option value="">Status</el-option>
-        <el-option v-for="(status, idx) in this.status" :value="status" placeholder="status" :key="idx">
+        <el-option v-for="(status, idx) in this.status" :value="status" placeholder="status" key="idx">
           {{ status }}
         </el-option>
       </el-select>
@@ -41,21 +40,22 @@
       Start Date:
       <el-input type="date" v-model="task.startDate" />
     </label>
-    <el-button type="info" plain @click.stop="add(this.task), $emit('close')">Add</el-button>
+    <el-button type="info" plain @click.stop="add(task), $emit('close')">Add</el-button>
+    {{ taskToEdit._id }}
   </div>
-  {{ this.taskId }}
+  
 
 </template>
 
 
 <script>
-import { socketService } from '../services/socket.service.js'
+
 
 
 export default {
   name: 'add-page',
   props: {
-    taskId: String,
+    taskToEdit: String,
   },
   data() {
     return {
@@ -65,13 +65,13 @@ export default {
 
     }
   },
-  create() {
-    this.task = this.$store.dispatch({ type: 'loadTaskById', id: taskId})
+  created() {
+    this.task = this.taskToEdit
   },
   methods: {
     add(task) {
-      console.log(this.task)
-      this.$store.dispatch({ type: 'saveTask', task: this.task })
+
+      this.$store.dispatch({ type: 'saveTask', task: task })
     }
   },
   components: {

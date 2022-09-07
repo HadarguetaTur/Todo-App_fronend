@@ -50,6 +50,9 @@ export default {
     socketService.on("task-filter", async (task) => {
       this.taskes = this.$store.getters.tasks
     })
+    socketService.on("task-filter", async (task) => {
+      this.taskes = this.$store.getters.tasks
+    })
 
   },
 

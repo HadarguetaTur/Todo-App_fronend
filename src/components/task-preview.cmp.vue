@@ -10,18 +10,14 @@
                 <Delete />
             </el-button>
             <el-button :type="task.status==='Dan' ? 'warning':'success'" plain @click="changeStatus(task)"> 
-              <span v-if="task.status==='Dan'"><Refresh /></span>
+              <span v-if="this.newTask.status==='Dan'"><Refresh /></span>
               <span v-else><CircleCheck /></span>      
             </el-button>
             <el-button type="primary" plain @click="isOpenModaladd = !isOpenModaladd">
                 <EditPen />
             </el-button>
-
-
-
         </el-icon>
-        <adit v-if="isOpenModaladd" @close="isOpenModaladd = false" :taskToEdit="this.copy" />
-
+        <adit v-if="isOpenModaladd" @close="isOpenModaladd = false" :taskToEdit="task" />
     </div>
 
 </template>
@@ -37,18 +33,15 @@ export default {
     data() {
         return {
             isOpenModaladd: false,
-            newTask: null,
-            copy: this.task,
-            isDan: null
+            newTask: {},
+           
+     
 
 
         }
     },
     created() {
-        this.newTask = this.$store.dispatch({ type: 'loadEmptyTask' })
-        this.isDan = (this.task.status === 'Dan' ? true : false)
-        console.log(this.isDan)
-
+        this.newTask =this.task
     },
     methods: {
         remove() {
@@ -56,14 +49,8 @@ export default {
             socketService.emit('task-removed', this.task)
         },
         changeStatus(task) {
-
-            this.newTask = task
-            this.newTask.status = (this.isDan ? 'New' : 'Dan')
-            // this.isDan = !this.isDan
+            this.newTask.status = (task.status === 'Dan' ? 'New' : 'Dan')
             this.$store.dispatch({ type: 'saveTask', task: this.newTask })
-            this.$store.dispatch({ type: 'loadTasks' })
-            socketService.emit('task-added', task)
-
         }
     },
     computed: {},

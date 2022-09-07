@@ -24,13 +24,13 @@ export default {
     },
     computed: {
         tasks() {
-            console.log(this.$store.getters.tasks)
+        
             return this.$store.getters.tasks
         },
 
     },
     created() {
-        console.log(this.$store.getters.tasks)
+     
 
     },
 

@@ -42,8 +42,9 @@ async function getById(Id) {
 async function save(task) {
   console.log('service',task)
   const savedtask = task._id
-    ? await httpService.put("task", task)
+    ? await httpService.put(`${ENDPOINT}/${task._id}`, task)
     : await httpService.post("task", task)
+    console.log('fffffffffffffffffffffff',savedtask)
   return savedtask
 }
 
