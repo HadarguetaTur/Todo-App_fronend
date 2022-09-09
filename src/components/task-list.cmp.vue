@@ -41,18 +41,18 @@ export default {
     }
   },
   created() {
-    socketService.on("task-added", async (task) => {
-      this.$store.dispatch({ type: 'loadTasks' })
-    })
-    socketService.on("task-removed", async (task) => {
-      this.$store.dispatch({ type: 'loadTasks' })
-    })
-    socketService.on("task-filter", async (task) => {
-      this.taskes = this.$store.getters.tasks
-    })
-    socketService.on("task-filter", async (task) => {
-      this.taskes = this.$store.getters.tasks
-    })
+    // socketService.on("task-added", async (task) => {
+    //   this.$store.dispatch({ type: 'loadTasks' })
+    // })
+    // socketService.on("task-removed", async (task) => {
+    //   this.$store.dispatch({ type: 'loadTasks' })
+    // })
+    // socketService.on("task-filter", async (task) => {
+    //   this.taskes = this.$store.getters.tasks
+    // })
+    // socketService.on("task-filter", async (task) => {
+    //   this.taskes = this.$store.getters.tasks
+    // })
 
   },
 

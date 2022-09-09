@@ -49,7 +49,7 @@
 
 
 <script>
-import { socketService } from '../services/socket.service.js'
+
 
 
 export default {
@@ -70,15 +70,13 @@ create() {
   if(this.taskToEdit){
     this.task=this.taskToEdit
   }
-  console.log(this.task)
-
-
   },
+
+
   methods: {
     add(task) {
-      console.log(task)
       this.$store.dispatch({ type: 'saveTask', task: this.task })
-      socketService.emit('task-added', task)
+      this.$store.dispatch({ type: 'loadTasks' })
     }
   },
   components: {

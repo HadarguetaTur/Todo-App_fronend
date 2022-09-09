@@ -49,19 +49,16 @@ export default {
     },
     data() {
         return {
-
             importance: [1, 2, 3, 4],
             status: ['New', 'Failed', 'Dan', 'Canceled'],
             filterBy: {
                 txt: "",
                 status: "",
                 importance: "",
-
-
+                sortDir:1,
+                sortTxt: 'title',
             }
         }
-
-
     },
 
     methods: {

@@ -29,6 +29,7 @@ export default {
  
     },
     saveTask(state, { task }) {
+      console.log(task)
       state.tasks.push(task)
     },
     removeTask(state, { task }) {
@@ -73,7 +74,6 @@ export default {
     async saveTask({ commit }, { task }) {
       try {
         const taskToSave = await taskService.save(task)
-        console.log(taskToSave)
         commit({ type: "saveTask", taskToSave })
       } catch (err) {
         console.log("Error: cannot save task", err)
@@ -87,6 +87,22 @@ export default {
       } catch (err) {
         console.log("Error: cannot save task", err)
         throw err
+      }
+    },
+    async clearTasks({ commit }) {
+      try {
+        await taskService.clearTasks();
+      } catch {
+        console.error("Couldn't clear tasks");
+      }
+    },
+    async getTheNextTask({ commit }) {
+      try {
+        const task=await taskService.getTheNextTask();
+        console.log(task)
+        return task 
+      } catch {
+        console.error("Couldn't toggel");
       }
     },
   },

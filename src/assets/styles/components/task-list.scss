@@ -2,6 +2,7 @@
 
     gap: rem(20px);
     padding: unset;
+    width: 60%;
     
     .titles{
         display: grid;
@@ -24,9 +25,12 @@
         // grid-auto-rows: minmax(min-content, max-content);
         border:1px solid rgba(128, 128, 128, 0.601);
         box-shadow: 0 1px 5px rgba(0, 0, 0, 0.30);
+        margin: 20px auto ;
         align-items: center;
         justify-content: center;
         line-height: 2.8;
+        animation: 0.5s;
+        padding: rem(20px);
         span{
             text-align: center;
         }
@@ -41,6 +45,16 @@
                 width: rem(22px);
             }
 
+        }
+        .task-status{
+       
+                align-self: flex-start;
+                border-radius: 10px;
+                padding: 2px 4px;
+                font-size: 16px;
+                // min-width: 300px;
+                text-align: center;
+           
         }
      
        
@@ -58,4 +72,15 @@
     
     
    }
+}
+
+.New{
+    background-color: rgba(66, 161, 255, 0.466);
+}
+.Dan{
+    background-color: hsl(101deg 53% 75%);
+}
+
+.Failed{
+    background-color: hsl(0deg 87% 85%);
 }

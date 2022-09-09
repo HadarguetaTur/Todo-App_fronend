@@ -72,6 +72,7 @@ export default {
     add(task) {
 
       this.$store.dispatch({ type: 'saveTask', task: task })
+      this.$store.dispatch({ type: 'loadTasks' })
     }
   },
   components: {
